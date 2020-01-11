@@ -4,37 +4,43 @@
 
 
 addTask = () => {
-  //event listener on form through submit button, get the input field
+  // add event listener on form through submit button
   let form = document.getElementById('create-task-form')
   form.addEventListener("submit", function() {
     event.preventDefault()
     console.log("submitter btn clicked")
 
-    // create a new list element with a delete button
+    // create a new list element 
+    // create a new delete button
     let newListItem = document.createElement('li')
     let deleteButton = document.createElement('button')
     
+    //set display of delete button
     deleteButton.innerText = "x"
 
+  // DELETING THE TASK
+    //add event listener to delete button to remove the whole li element (the parent)
     deleteButton.addEventListener("click", function() {
       this.parentNode.remove()
     })
 
-    // get the input from form save it to a var, create element
-    let input = document.querySelector('form')
-    newListItem.innerText = input[0].value
-
-    //findElementById #list
-    let toDoList = document.getElementById('tasks')
+  // ADDING THE TASK
+    // select form input field (1st item in the form) and make the inner text of the newly create li element = value that user inputs
+    let inputForm = document.querySelector('form')
+    newListItem.innerText = inputForm[0].value
 
     //append new element to #list
+    //findElementById #list
+    let toDoList = document.getElementById('tasks')
     toDoList.appendChild(newListItem)
     newListItem.appendChild(deleteButton)
-    input[0].value = ""
+
+    // clear input field at end of each "submit"
+    inputForm[0].value = ""
   })
 }
 
-
+//run the addTask function after the dom has loaded
 document.addEventListener("DOMContentLoaded", () => {
   addTask()
 } )
