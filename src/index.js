@@ -1,11 +1,14 @@
+
 let createTask = document.getElementById("create-task-form")
 let newInput = document.createElement("input")
 newInput.id = "new-task-due"
 newInput.placeholder = "due date"
-createTask.appendChild(newInput)
+
+//createTask.appendChild(newInput)
+
+createTask.prepend(newInput)
 
 let taskDescription = document.getElementById("new-task-description")
-
 
 
 
